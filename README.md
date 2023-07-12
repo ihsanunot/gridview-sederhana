@@ -1,19 +1,76 @@
-# GridView Dasar
+# GridView properties
+
+
+## HANYA UTK TAMPILAN MOBILE TAMPILAN WEB NYA MASIH BERANTAKAN
 
 Gridview bisa render secara horizontal dan vertikal mirip table juga.
 
-* Row = Cross Axis
-* Column = Main Axis
+**crossAxisSpacing**
 
-Gridview
-Referensi = https://api.flutter.dev/flutter/widgets/GridView-class.html
+Untuk atur jarak spasi secara vertical.
+
+**mainAxisSpacing**
+
+Untuk atur jarak spasi secara horizontal.
+
+**scrollDirection**
+
+Arah scrolling, jika device mode landscape, bisa kita pakai scrollDirection to Axis.horizontal
+
+**physics**
+Digunakan untuk seperti non-aktifkan fungsi scroll normal, tapi masih bisa digeser tanpa scrolling.
+
+```
+ClampingScrollPhysics() for Android BouncingScrollPhysics() for iOS
+```
+
+**shrinkWrap**
+agar hanya mengambil ruang yang diperlukan untuk mengisi item dalam arah gulir scroll nya.
+
+Contoh:
+
+```
+/////shrinkWrap: false,
+Column(
+  children: [
+    Expanded(
+      child: GridView(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
+        shrinkWrap: false,
+        children: [... ],
+      ),
+    ),
+    ElevatedButton(onPressed: () {}, child: Text('Close'))
+  ],
+)
+/////shrinkWrap: true,
+Column(
+  children: [
+    GridView(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+      ),
+      shrinkWrap: true,
+      children: [...],
+    ),
+    ElevatedButton(onPressed: () {}, child: Text('Close'))
+  ],
+)
+```
+^^^
 ---
 
-**gridDelegate** digunakan untuk jadi controller, 
-di contoh ini SliverGridDelegateWithFixedCrossAxisCount() dengan **crossAxisCount set to 3**, 
+Cara Mengatasi "Unnecessary use of string interpolation":
 
-yang arti nya kita ingin menapilkan 3 item secara horizontal dan juga secara vertikal(tergantung arah scroll nya).
+```
+children: <Widget>[
+                Text(
+                  '${{number}}',
+                  ..............
+```
 
-**children** di contoh mengacu pada daftar item list yang diberikan, bisa menerima berbagai bentuk widget juga utk di render.
+inti nya pakai ${{nama_variable}} nanti baru bisa.
 ---
-
+**Ihsanunot**
