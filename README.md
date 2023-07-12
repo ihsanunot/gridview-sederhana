@@ -1,4 +1,5 @@
 # GridView Dasar
+![ezgif com-resize](https://github.com/ihsanunot/gridview-sederhana/assets/127992374/6b31fe5f-3334-4c20-b593-51fcd495866d)
 
 Gridview bisa render secara horizontal dan vertikal mirip table juga.
 
