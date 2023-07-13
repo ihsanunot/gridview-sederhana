@@ -1,5 +1,7 @@
 # Gridview with Long List
 
+![gridviewsatu](https://github.com/ihsanunot/gridview-sederhana/assets/127992374/2bae0f6b-835c-4691-9803-d9cfbf628c51)
+
 Pakai GridView.builder() constructor.
 
 ```
