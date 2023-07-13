@@ -1,76 +1,30 @@
-# GridView properties
+# Gridview with Long List
 
-
-## HANYA UTK TAMPILAN MOBILE TAMPILAN WEB NYA MASIH BERANTAKAN
-
-Gridview bisa render secara horizontal dan vertikal mirip table juga.
-
-**crossAxisSpacing**
-
-Untuk atur jarak spasi secara vertical.
-
-**mainAxisSpacing**
-
-Untuk atur jarak spasi secara horizontal.
-
-**scrollDirection**
-
-Arah scrolling, jika device mode landscape, bisa kita pakai scrollDirection to Axis.horizontal
-
-**physics**
-Digunakan untuk seperti non-aktifkan fungsi scroll normal, tapi masih bisa digeser tanpa scrolling.
+Pakai GridView.builder() constructor.
 
 ```
-ClampingScrollPhysics() for Android BouncingScrollPhysics() for iOS
-```
-
-**shrinkWrap**
-agar hanya mengambil ruang yang diperlukan untuk mengisi item dalam arah gulir scroll nya.
-
-Contoh:
-
-```
-/////shrinkWrap: false,
-Column(
-  children: [
-    Expanded(
-      child: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-        ),
-        shrinkWrap: false,
-        children: [... ],
-      ),
-    ),
-    ElevatedButton(onPressed: () {}, child: Text('Close'))
-  ],
-)
-/////shrinkWrap: true,
-Column(
-  children: [
-    GridView(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-      ),
-      shrinkWrap: true,
-      children: [...],
-    ),
-    ElevatedButton(onPressed: () {}, child: Text('Close'))
-  ],
+GridView.builder(
+  itemCount: 100,
+  itemBuilder: (context, index) => ItemTile(index),
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+  ),
 )
 ```
-^^^
+**itemCount** utk number item nya, bisa utk menentukan jumlah maximum scroll nya.
+
+**itemBuilder** membuat widget sesuai jumlah index nya.
+
+**childAspectRatio** property bisa utk menyesuaikan height dari si item nya.
 ---
 
-Cara Mengatasi "Unnecessary use of string interpolation":
+**Catatan**:
 
-```
-children: <Widget>[
-                Text(
-                  '${{number}}',
-                  ..............
-```
+- Key Property digunakan untuk mengontrol bagaimana suatu widget menggantikan widget lainnya di dalam widget tree.
 
-inti nya pakai ${{nama_variable}} nanti baru bisa.
----
+- [itemNo % Colors.primaries.length]; ini mirip operator %
+
+- key: Key('text_$itemNo') biar private si $itemNo dan juga sesuai dengan Type nya.
+
+
 **Ihsanunot**
